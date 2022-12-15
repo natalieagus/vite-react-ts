@@ -135,3 +135,18 @@ export default Data
 ```
 
 Create your own test files with the name `MODULE.test.tsx`, and run `npm test` after you're done.
+
+## End to end testing
+
+Cypress for QA:
+
+```
+npm install cypress --save-dev
+npm install eslint-plugin-cypress @testing-library/cypress --save-dev
+touch cypress/.eslintrc.json
+```
+
+1. Add `.eslintrc.json` and `.tsconfig.json` inside `cypress/`
+2. Update `.eslintrc.json` to ignore Cypress folder
+3. Update `jest.config.js` file to only match test files in the `src` folder
+4. Set up Testing Library by adding this line to the project's `cypress/support/commands.ts`: `import '@testing-library/cypress/add-commands'`

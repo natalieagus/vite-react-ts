@@ -5,7 +5,6 @@ env:
   browser: true
   es2021: true
   node: true
-  jest: true
 extends:
   - eslint:recommended
   - plugin:react/recommended
@@ -13,7 +12,16 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - plugin:react-hooks/recommended
-overrides: []
+overrides:
+  - files:
+      - src/**/*.test.ts
+      - src/**/*.test.tsx
+    env:
+      jest: true
+    extends:
+      - plugin:jest/recommended
+    plugins:
+      - jest
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
@@ -24,4 +32,7 @@ parserOptions:
 plugins:
   - react
   - '@typescript-eslint'
-rules: {}
+rules:
+  prettier/prettier: error
+ignorePatterns:
+  - cypress/**/*
