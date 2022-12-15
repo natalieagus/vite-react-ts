@@ -265,3 +265,5 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
+
+add baseurl in github action Main script
