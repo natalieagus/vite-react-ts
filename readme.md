@@ -188,3 +188,5 @@ jobs:
           browser: chrome
           headless: true
 ```
+
+Then create a remote repo, and test by making a pull request for `main`.
