@@ -12,6 +12,7 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - plugin:react-hooks/recommended
+  - prettier
 overrides:
   - files:
       - src/**/*.test.ts
@@ -26,12 +27,13 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
   sourceType: module
-  tsconfigRootDir: __dirname,
+  project: ./tsconfig.json
   ecmaFeatures:
     jsx: true
 plugins:
   - react
   - '@typescript-eslint'
+  - prettier
 rules:
   prettier/prettier: error
 ignorePatterns:
