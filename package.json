@@ -3,11 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.8.0",
+    "npm": ">=8.18.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:scripts": "eslint --ext .ts,.tsx src"
+    "lint:scripts": "eslint --ext .ts,.tsx src",
+    "lint:styles": "stylelint \"src/**/*.css\""
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -20,8 +25,15 @@
     "@typescript-eslint/parser": "^5.46.1",
     "@vitejs/plugin-react": "^3.0.0",
     "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.1",
+    "stylelint": "^14.16.0",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^29.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
   }
