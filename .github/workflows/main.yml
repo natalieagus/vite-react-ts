@@ -27,6 +27,6 @@ jobs:
           config-file: cypress.config.ts
           build: npm run build
           start: npm run preview -- --port=3000
-          wait-on: http://localhost:3000
+          wait-on: http://localhost:3000/vite-react-ts
           browser: chrome
           headless: true
