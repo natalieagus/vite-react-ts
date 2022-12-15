@@ -190,3 +190,28 @@ jobs:
 ```
 
 Then create a remote repo, and test by making a pull request for `main`.
+
+## Commitlint
+
+To enforce valid commit messages:
+
+```
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+```
+
+Create a `.commitlintrc.json`:
+
+```
+{
+  "extends": ["@commitlint/config-conventional"]
+}
+```
+
+Use `husky` to run it before each commit:
+
+```
+npm install husky --save-dev
+npx husky install
+npm pkg set scripts.scriptname="husky install"
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
