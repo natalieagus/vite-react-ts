@@ -150,3 +150,41 @@ touch cypress/.eslintrc.json
 2. Update `.eslintrc.json` to ignore Cypress folder
 3. Update `jest.config.js` file to only match test files in the `src` folder
 4. Set up Testing Library by adding this line to the project's `cypress/support/commands.ts`: `import '@testing-library/cypress/add-commands'`
+
+## CI
+
+Create github action script at `.github/workflows/main.yml`:
+
+```
+name: "Main"
+on: pull_request
+jobs:
+  lint-and-test:
+    name: Run linters and then tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint
+        run: npm run lint:scripts
+      - name: Run Stylelint
+        run: npm run lint:styles
+      - name: Run Tests
+        run: npm test
+        env:
+          CI: true
+      - name: Run Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run serve -- --port=3000
+          wait-on: http://localhost:3000
+          browser: chrome
+          headless: true
+```
