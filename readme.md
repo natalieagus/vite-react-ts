@@ -153,7 +153,7 @@ touch cypress/.eslintrc.json
 
 ## CI
 
-Create github action script at `.github/workflows/main.yml`:
+Create github action script at `.github/workflows/main.yml`, and an `.nvmrc` file with content `16.13`.
 
 ```
 name: "Main"
