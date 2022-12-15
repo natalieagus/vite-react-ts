@@ -24,4 +24,5 @@ dist-ssr
 *.sw?
 
 # Cypress artefact
-cypress/videos/*.mp4
+cypress/videos
+cypress/screenshots
