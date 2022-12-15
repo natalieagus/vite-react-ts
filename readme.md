@@ -215,3 +215,53 @@ npx husky install
 npm pkg set scripts.scriptname="husky install"
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 ```
+
+Now commit all the changes with [conventional commit convention](https://www.conventionalcommits.org/en/v1.0.0/).
+
+## Semantic release
+
+Install the package:
+
+```
+npm install --save-dev semantic-release
+```
+
+Create `.releaserc.json`:
+
+```
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github"
+  ]
+}
+```
+
+Then create a `release.yml` github action file:
+
+```
+
+name: "Release"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  semantic-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+      - name: Install dependencies
+        run: npm install
+      - name: Release a new version
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+```
