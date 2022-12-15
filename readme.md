@@ -183,8 +183,10 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
-          start: npm run serve -- --port=3000
+          start: npm run preview -- --port=3000
           wait-on: http://localhost:3000
           browser: chrome
           headless: true
 ```
+
+Then create a remote repo, and test by making a pull request for `main`.
