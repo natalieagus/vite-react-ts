@@ -37,3 +37,52 @@ Now setup storybook:
 ```
 npx sb init --builder storybook-builder-vite
 ```
+
+Setup `storybook/main.cjs`, make sure to config `global` as `window` in vite.
+
+```
+module.exports = {
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+  ],
+  framework: '@storybook/react',
+  core: {
+    builder: '@storybook/builder-vite',
+  },
+  async viteFinal(config) {
+    return {
+      ...config,
+      define: {
+        ...config.define,
+        global: 'window',
+      },
+      esbuild: {
+        ...config.esbuild,
+      },
+    }
+  },
+}
+```
+
+Also import `jest-mock` in `storybook/preview.cjs`:
+
+```
+import * as jest from 'jest-mock'
+window.jest = jest
+import * as jest from 'jest-mock'
+window.jest = jest
+
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+}
+
+```
