@@ -12,7 +12,7 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - plugin:react-hooks/recommended
-  - prettier
+  - plugin:prettier/recommended
 overrides:
   - files:
       - src/**/*.test.ts
@@ -33,7 +33,6 @@ parserOptions:
 plugins:
   - react
   - '@typescript-eslint'
-  - prettier
 rules:
   prettier/prettier: error
 ignorePatterns:
