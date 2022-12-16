@@ -301,3 +301,13 @@ import { Button } from '@chakra-ui/react'
 
 <Button colorScheme='blue'>Button</Button>
 ```
+
+## Storybook with Chakra
+
+Add the sb addon,
+
+```
+npm i -D @chakra-ui/storybook-addon
+```
+
+Then edit `preview.jsx` and `main.cjs` as shown.

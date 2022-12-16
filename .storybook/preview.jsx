@@ -1,4 +1,5 @@
 import '../src/index.css'
+import { ChakraProvider } from '@chakra-ui/react'
 import * as jest from 'jest-mock'
 window.jest = jest
 
@@ -11,3 +12,12 @@ export const parameters = {
     },
   },
 }
+
+// add chakra provider in storybook
+export const decorators = [
+  (Story) => (
+    <ChakraProvider>
+      <Story />
+    </ChakraProvider>
+  ),
+]
