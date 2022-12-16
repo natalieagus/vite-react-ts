@@ -8,10 +8,10 @@ import App from './App'
 test('Renders main page correctly', async () => {
   // Setup
   render(<App />)
-  const buttonCount = await screen.findByRole('button')
+  const buttons = await screen.findAllByRole('button')
 
   // Pre Expcations
-  expect(buttonCount.innerHTML).toBe('count is 0')
+  expect(buttons[0].innerHTML).toBe('count is 0')
 
   // Init
 
