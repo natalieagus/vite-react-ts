@@ -23,9 +23,10 @@ jobs:
           CI: true
       - name: Run Cypress
         uses: cypress-io/github-action@v5.0.0
+        timeout-minutes: 10
         with:
           config-file: cypress.config.ts
           build: npm run build
           start: npm run preview -- --port=3000
-          wait-on: 'http://127.0.0.1:3000'
+          # wait-on: 'http://127.0.0.1:3000'
           browser: chrome
