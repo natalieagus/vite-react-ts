@@ -1,4 +1,4 @@
-name: "Main"
+name: 'pullrequest'
 on: pull_request
 jobs:
   lint-and-test:
@@ -9,8 +9,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version-file: ".nvmrc"
-          cache: "npm"
+          node-version-file: '.nvmrc'
+          cache: 'npm'
       - name: Install dependencies
         run: npm install
       - name: Run ESLint
