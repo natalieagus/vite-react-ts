@@ -91,8 +91,6 @@ Also import `jest-mock` in `storybook/preview.cjs`:
 
 import _ as jest from 'jest-mock'
 window.jest = jest
-import _ as jest from 'jest-mock'
-window.jest = jest
 
 export const parameters = {
 actions: { argTypesRegex: '^on[A-Z].\*' },
