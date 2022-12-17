@@ -5,6 +5,6 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'http://localhost:3000/vite-react-ts/',
+    baseUrl: 'http://127.0.0.1:3000/vite-react-ts/',
   },
 })

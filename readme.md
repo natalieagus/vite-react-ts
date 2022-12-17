@@ -91,8 +91,6 @@ Also import `jest-mock` in `storybook/preview.cjs`:
 
 import _ as jest from 'jest-mock'
 window.jest = jest
-import _ as jest from 'jest-mock'
-window.jest = jest
 
 export const parameters = {
 actions: { argTypesRegex: '^on[A-Z].\*' },
@@ -267,3 +265,47 @@ jobs:
 ```
 
 add baseurl in github action Main script
+
+## Styled components
+
+Using chakra, install:
+
+```
+npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6
+```
+
+Go to `main.tsx`, and wrap with `<ChakraProvider>`:
+
+```
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+import { ChakraProvider } from '@chakra-ui/react'
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
+  </React.StrictMode>
+)
+```
+
+Then add component in `App.tsx` to test:
+
+```
+import { Button } from '@chakra-ui/react'
+
+<Button colorScheme='blue'>Button</Button>
+```
+
+## Storybook with Chakra
+
+Add the sb addon,
+
+```
+npm i -D @chakra-ui/storybook-addon
+```
+
+Then edit `preview.jsx` and `main.cjs` as shown.
