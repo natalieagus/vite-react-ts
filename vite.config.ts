@@ -8,4 +8,8 @@ export default defineConfig({
     port: 3000,
   },
   base: '/vite-react-ts/',
+  test: {
+    environment: 'jsdom',
+    globals: true,
+  },
 })
