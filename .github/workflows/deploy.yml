@@ -33,7 +33,7 @@ jobs:
         run: npm run lint:styles
 
       - name: Run Tests
-        run: npm test-vite
+        run: npm run test-vite
 
       - name: Run Cypress
         uses: cypress-io/github-action@v5.0.0
