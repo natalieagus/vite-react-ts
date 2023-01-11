@@ -309,3 +309,21 @@ npm i -D @chakra-ui/storybook-addon
 ```
 
 Then edit `preview.jsx` and `main.cjs` as shown.
+
+## Vitest
+
+npm i vitest
+
+add in `vite.config.ts`:
+
+```
+
+export default defineConfig({
+....
+  test: {
+    environment: 'jsdom',
+    globals: true,
+  },
+})
+
+```
