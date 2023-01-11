@@ -6,25 +6,38 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version-file: ".nvmrc"
-          cache: "npm"
-
+          node-version-file: '.nvmrc'
+          cache: 'npm'
       - name: Install dependencies
         run: npm install
-
       - name: Build project
         run: npm run build
+      - name: Run ESLint
+        run: npm run lint:scripts
+      - name: Run Stylelint
+        run: npm run lint:styles
+      - name: Run Tests
+        run: npm test
+        env:
+          CI: true
+      - name: Run Cypress
+        uses: cypress-io/github-action@v5.0.0
+        timeout-minutes: 10
+        with:
+          config-file: cypress.config.ts
+          build: npm run build
+          start: npm run preview -- --port=3000
+          # wait-on: 'http://127.0.0.1:3000'
+          browser: chrome
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
