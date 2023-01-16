@@ -327,3 +327,5 @@ export default defineConfig({
 })
 
 ```
+
+Semantic release not working with node 16
